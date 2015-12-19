@@ -3,25 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | ConfusionPrevails Blog</title>
+  <title>Callback Pattern | ConfusionPrevails Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="">
+  <meta name="keywords" content="nodejs,theory">
   
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="The Callback Patterncallbacks are the handlers we saw in Reactor Pattern. This brings in a new style of programming where the synchronous return is replaced by callback functions.
+The Continuation Pas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://blog.rajat.co.in/2015/12/18/hello-world/index.html">
+<meta property="og:title" content="Callback Pattern">
+<meta property="og:url" content="http://blog.rajat.co.in/2015/06/28/Callback-Pattern/index.html">
 <meta property="og:site_name" content="ConfusionPrevails Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2015-12-19T00:22:15.000Z">
+<meta property="og:description" content="The Callback Patterncallbacks are the handlers we saw in Reactor Pattern. This brings in a new style of programming where the synchronous return is replaced by callback functions.
+The Continuation Pas">
+<meta property="og:image" content="http://blog.rajat.co.in/images/nodejs2.png">
+<meta property="og:updated_time" content="2015-12-19T03:15:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="Callback Pattern">
+<meta name="twitter:description" content="The Callback Patterncallbacks are the handlers we saw in Reactor Pattern. This brings in a new style of programming where the synchronous return is replaced by callback functions.
+The Continuation Pas">
   
   
     <link rel="icon" href="/favicon.png">
@@ -127,11 +128,11 @@ Quick">
           <section id="main">
             <div class="main-body-header">
 
-              <h1 class="header">uncategorized</h1>
+              <h1 class="header"><a class="page-title-link" href="/categories/Node-JS/">Node JS</a></h1>
             </div>
             <div class="main-body-content">
               
-  <article id="post-hello-world" class="article article-single article-type-post" itemscope itemprop="blogPost">
+  <article id="post-Callback-Pattern" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
       <!--  -->
       
@@ -139,33 +140,56 @@ Quick">
           
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      Callback Pattern
     </h1>
   
 
         </header>
       
       <p class="article-byline">
-        <a href="/2015/12/18/hello-world/" class="article-date">
-  <time datetime="2015-12-19T00:22:15.000Z" itemprop="datePublished">2015-12-18</time>
+        <a href="/2015/06/28/Callback-Pattern/" class="article-date">
+  <time datetime="2015-06-29T02:14:39.000Z" itemprop="datePublished">2015-06-28</time>
 </a>
       </p>
       <div class="article-entry" itemprop="articleBody">
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p><img src="/images/nodejs2.png" alt="alt text" title="NodeJS Logo"></p>
+<h1 id="The_Callback_Pattern"><a href="#The_Callback_Pattern" class="headerlink" title="The Callback Pattern"></a>The Callback Pattern</h1><p><em>callbacks</em> are the handlers we saw in Reactor Pattern. This brings in a new style of programming where the synchronous <code>return</code> is replaced by callback <code>functions</code>.</p>
+<h2 id="The_Continuation_Passing_Style_or_CPS"><a href="#The_Continuation_Passing_Style_or_CPS" class="headerlink" title="The Continuation Passing Style or CPS"></a>The Continuation Passing Style or CPS</h2><p>So, a callback is a function that is passed as an argument to a function, and this callback function is invoked with the result when the operation completes.<br>This is called <em>Continuation Passing Style</em>.</p>
+<p>For example consider this synchronous function:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a,b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This simple add function just returns the sum of values in <strong>a</strong> and <strong>b</strong>. This is the <strong>direct style</strong> and is the most common way of returning values.</p>
+<p>Lets modify this to Continuation Passing Style - so, this function should now take a callback function:</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(a,b, callback)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">callback</span>(a+b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Lets see how this new method needs to be invoked:</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add(<span class="number">5</span>,<span class="number">8</span>, function(<span class="literal">result</span>)&#123;</span><br><span class="line">        console.log('<span class="type">Sum</span> <span class="keyword">is</span> :'+<span class="literal">result</span>);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>To many developers this might seem like an overkill. Yes it is an overkill for a <strong>synchronous</strong> function <code>add()</code>.<br>But for <strong>asynchronous</strong> functions, that’s the most common style.</p>
+<p>The <strong>asynchronous</strong> nature can bring in a lot of unpredictability and can affect the flow of an application both in terms of correctness and efficiency.</p>
+<h4 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h4><blockquote>
+<p>Always prefer the direct style when the function is synchronous</p>
+<p>Always document if the the function is synchronous or asynchronous.</p>
+<p>Always build your code or APIs to be either completely synchronous or completely asynchronous</p>
+</blockquote>
+<h2 id="Node-js_callback_conventions"><a href="#Node-js_callback_conventions" class="headerlink" title="Node.js callback conventions"></a>Node.js callback conventions</h2><p>In the world of Node.js, there are conventions which are followed by everyone. Its important to stick to these conventions when we are designing asynchronous APIs.</p>
+<h3 id="callbacks_come_last"><a href="#callbacks_come_last" class="headerlink" title="callbacks come last"></a>callbacks come last</h3><p>In Node.js if a function accepts a callback as an input, then the callback has to be the last argument.</p>
+<p>Example:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.<span class="function"><span class="title">readFile</span><span class="params">(filename, [options], callback)</span></span></span><br></pre></td></tr></table></figure>
+<p>The reason: function call becomes more readable when callback is defined in place.</p>
+<h3 id="errors_comes_first"><a href="#errors_comes_first" class="headerlink" title="errors comes first"></a>errors comes first</h3><p>Errors are propagated as part of callbacks. So, in Node.js any error that is produced, should be passed as the first argument of the callback. If the operation succeeds without errors, then the 1st argument is passed as null.</p>
+<p>Example:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(<span class="string">'temp.txt'</span>, <span class="function"><span class="keyword">function</span><span class="params">(err, data)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="comment">// handle error</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">// process data</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Ideally - err should be an <code>Error</code> object.</p>
+<h2 id="Propagating_Errors"><a href="#Propagating_Errors" class="headerlink" title="Propagating Errors"></a>Propagating Errors</h2><p>For synchronous, direct style functions the error is propagated using <code>throw</code> where the error is jumped up the call stack until its caught.</p>
+<p>In asynchronous, continuation passing style function, errors are propagated by passing the <code>Error</code> object to the next callback function in the chain.</p>
+<p>Example:</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> fs = require(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readJSON</span><span class="params">(filename, callback)</span> </span>&#123;</span><br><span class="line">  fs.readFile(filename, <span class="string">'utf8'</span>, <span class="function"><span class="keyword">function</span><span class="params">(err, data)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> parsed;</span><br><span class="line">    <span class="keyword">if</span>(err)</span><br><span class="line">      <span class="comment">//propagate the error and exit the current function</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">callback</span>(err);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">//parse the file contents</span></span><br><span class="line">      parsed = JSON.parse(data);</span><br><span class="line">    &#125; <span class="keyword">catch</span>(err) &#123;</span><br><span class="line">      <span class="comment">//catch parsing errors</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">callback</span>(err);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//no errors, propagate just the data</span></span><br><span class="line">    <span class="keyword">callback</span>(<span class="literal">null</span>, parsed);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       </div>
       <footer class="article-footer">
-        <a data-url="http://blog.rajat.co.in/2015/12/18/hello-world/" data-id="ciicj9atf00086bs1oadp7xv1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        <a data-url="http://blog.rajat.co.in/2015/06/28/Callback-Pattern/" data-id="ciicj9ato000m6bs1hjxxb8m4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
         
         
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/theory/">theory</a></li></ul>
+
       </footer>
     </div>
   </article>
@@ -192,20 +216,20 @@ Quick">
     
 <nav id="article-nav">
   
-    <a href="/2015/12/18/Hello-Blog/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/07/06/process-nextTick-vs-setImmediate-vs-setTimeout/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">newer</strong>
       <p class="article-nav-title">
         
-          Hello Blog
+          process.nextTick() vs setImmediate() vs setTimeout()
         
       </p>
       <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
   
   
-    <a href="/2015/07/06/process-nextTick-vs-setImmediate-vs-setTimeout/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/06/24/Reactor-Pattern/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <p class="article-nav-title">process.nextTick() vs setImmediate() vs setTimeout()</p>
+      <p class="article-nav-title">Reactor Pattern</p>
       <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
     </a>
   

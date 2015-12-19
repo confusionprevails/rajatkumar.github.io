@@ -3,19 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | ConfusionPrevails Blog</title>
+  <title>Reactor Pattern | ConfusionPrevails Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="nodejs,theory">
+  
 
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ConfusionPrevails Blog">
-<meta property="og:url" content="http://blog.rajat.co.in/archives/index.html">
+  <meta name="description" content="The Reactor PatternThe reactor pattern is the heart of Node.js async nature. This allows Node.js to be performant using single-threaded architectureand non-blocking I/O.
+Slow I/O and its Blocking natu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reactor Pattern">
+<meta property="og:url" content="http://blog.rajat.co.in/2015/06/24/Reactor-Pattern/index.html">
 <meta property="og:site_name" content="ConfusionPrevails Blog">
-<meta property="og:description">
+<meta property="og:description" content="The Reactor PatternThe reactor pattern is the heart of Node.js async nature. This allows Node.js to be performant using single-threaded architectureand non-blocking I/O.
+Slow I/O and its Blocking natu">
+<meta property="og:image" content="http://blog.rajat.co.in/images/nodejs2.png">
+<meta property="og:image" content="http://blog.rajat.co.in/images/reactor-pattern.png">
+<meta property="og:updated_time" content="2015-12-19T03:12:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ConfusionPrevails Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Reactor Pattern">
+<meta name="twitter:description" content="The Reactor PatternThe reactor pattern is the heart of Node.js async nature. This allows Node.js to be performant using single-threaded architectureand non-blocking I/O.
+Slow I/O and its Blocking natu">
   
   
     <link rel="icon" href="/favicon.png">
@@ -121,230 +129,70 @@
           <section id="main">
             <div class="main-body-header">
 
-              <h1 class="header"><i class="icon fa fa-archive"></i>archive</h1>
+              <h1 class="header"><a class="page-title-link" href="/categories/Node-JS/">Node JS</a></h1>
             </div>
             <div class="main-body-content">
               
-  
-  
-    
-    
+  <article id="post-Reactor-Pattern" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
       
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year"><i class="icon fa fa-calendar-o"></i>2015</a>
-        </div>
-        <div class="archives">
-    
-    
-    
-      <div class="article-row">
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/12/18/Hello-Blog/" class="thumbnail">
+        <header class="article-header">
+          
   
-    <span style="background-image:url(/images/nodejs2.png
-)" alt="Hello Blog" class="thumbnail-image"></span>
+    <h1 class="article-title" itemprop="name">
+      Reactor Pattern
+    </h1>
   
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2015/06/24/Reactor-Pattern/" class="article-date">
+  <time datetime="2015-06-25T05:08:34.000Z" itemprop="datePublished">2015-06-24</time>
 </a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/random/">random</a></p>
-        <p class="date"><time datetime="2015-12-19T00:31:11.000Z" itemprop="datePublished">2015-12-18</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/12/18/Hello-Blog/" class="title">Hello Blog</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        
-
       </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p><img src="/images/nodejs2.png" alt="alt text" title="NodeJS Logo"></p>
+<h1 id="The_Reactor_Pattern"><a href="#The_Reactor_Pattern" class="headerlink" title="The Reactor Pattern"></a>The Reactor Pattern</h1><p>The reactor pattern is the heart of Node.js async nature. This allows Node.js to be performant using single-threaded architecture<br>and non-blocking I/O.</p>
+<h2 id="Slow_I/O_and_its_Blocking_nature"><a href="#Slow_I/O_and_its_Blocking_nature" class="headerlink" title="Slow I/O and its Blocking nature"></a>Slow I/O and its Blocking nature</h2><p>I/O is slow. I/O is not an expensive operation, but it adds a delay between the moment the request is sent and the moment the request is processed.<br>Traditionally, I/O request will block the thread until the operation is complete.</p>
+<p>The following pseudo code explains the blocking:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// this step blocks the thread until we read the file</span></span><br><span class="line">data = bigFile.<span class="keyword">read</span>();</span><br><span class="line"><span class="comment">// data is available, so display it</span></span><br><span class="line"><span class="keyword">print</span>(data);</span><br></pre></td></tr></table></figure>
+<p>With such a blocking operation, its obvious that a server thread will remain blocked, and hence wont be able to handle multiple requests.<br>So Blocking I/O operation with single-threaded architecture is just - BAD.</p>
+<p>Most modern OSs support non-blocking I/O. The system call returns almost immediately without waiting for the data to be read/written. It responds with a defined constant value when data is not available.</p>
+<h2 id="Events_Notification"><a href="#Events_Notification" class="headerlink" title="Events Notification"></a>Events Notification</h2><p>Most OSs also support <em>Event Notification</em> interface.</p>
+<p>The primary idea behind <em>Event Notification</em> interface is-</p>
+<ul>
+<li>watch a select list of resources</li>
+<li>collect and queue the I/O operations from these resources</li>
+<li>watch events generated by these resources</li>
+<li>perform action if an event occurs and dequeue the resource</li>
+</ul>
+<h2 id="Reactor_Pattern"><a href="#Reactor_Pattern" class="headerlink" title="Reactor Pattern"></a>Reactor Pattern</h2><p>Based on Events Notification idea, we have the NodeJs <em>Reactor Pattern</em>. The main idea is to have a <em>handler</em> (represented by a <em>callback</em> function) that is attached to each I/O operation.<br>Each time the event is processed by the <em>Event Loop</em> it invokes the attached <em>handler</em> function.</p>
+<p>The structure of Reactor Pattern can be described using the following image:</p>
+<p><img src="/images/reactor-pattern.png" alt="alt text" title="Reactor Pattern"></p>
+<ol>
+<li>For every I/O request, the node.js application submits a request to <strong>Event Demultiplexer</strong> and specifies the handler to be invoked when the I/O operation completes. (This submission is non-blocking and control is returned to the application immediately)</li>
+<li>Once the I/O operation is <em>complete</em>, the Event Demultiplexer pushes the events into <strong>Events Queue</strong></li>
+<li>Now, the <strong>Event Loop</strong> iterates over the items in Events Queue</li>
+<li>For each event, the associated handler is invoked</li>
+<li>Once the handler <em>completes</em> its execution, it gives back control to Event Loop (5a). Another possibility is that this handler causes new I/O operation requests to be submitted to Event Demultiplexer before giving back the control to Event Loop</li>
+<li>When all the items in Event Queue are processed, the Event Loop will block again on Event Demultiplexer</li>
+</ol>
+<blockquote><p>Reactor Pattern: handles I/O by blocking until new events are made available from a set of observable resources and then <em>reacting</em> by dispatching each event to an associated handler</p>
+</blockquote>
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://blog.rajat.co.in/2015/06/24/Reactor-Pattern/" data-id="ciicj9ath00096bs1l4mqgohy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/theory/">theory</a></li></ul>
+
+      </footer>
     </div>
   </article>
-
-    
-  
-    
-    
-    
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/12/18/hello-world/" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"></p>
-        <p class="date"><time datetime="2015-12-19T00:22:15.000Z" itemprop="datePublished">2015-12-18</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/12/18/hello-world/" class="title">Hello World</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
-      </p>
-    </div>
-  </article>
-
-    
-      </div>
-    
-  
-    
-    
-    
-    
-      <div class="article-row">
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/07/06/process-nextTick-vs-setImmediate-vs-setTimeout/" class="thumbnail">
-  
-    <span style="background-image:url(/images/nodejs2.png
-)" alt="process.nextTick() vs setImmediate() vs setTimeout()" class="thumbnail-image"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/Node-JS/">Node JS</a></p>
-        <p class="date"><time datetime="2015-07-06T18:15:27.000Z" itemprop="datePublished">2015-07-06</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/07/06/process-nextTick-vs-setImmediate-vs-setTimeout/" class="title">process.nextTick() vs setImmediate() vs setTimeout()</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        
-process.nextTick() vs setImmediate() vs setTimeout()So, you need to ensure your node.js code is completely asynchronous. But what is the best option to make a synchronous function behave asynchronous
-      </p>
-    </div>
-  </article>
-
-    
-  
-    
-    
-    
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/06/28/Callback-Pattern/" class="thumbnail">
-  
-    <span style="background-image:url(/images/nodejs2.png
-)" alt="Callback Pattern" class="thumbnail-image"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/Node-JS/">Node JS</a></p>
-        <p class="date"><time datetime="2015-06-29T02:14:39.000Z" itemprop="datePublished">2015-06-28</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/06/28/Callback-Pattern/" class="title">Callback Pattern</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        
-The Callback Patterncallbacks are the handlers we saw in Reactor Pattern. This brings in a new style of programming where the synchronous return is replaced by callback functions.
-The Continuation Pa
-      </p>
-    </div>
-  </article>
-
-    
-      </div>
-    
-  
-    
-    
-    
-    
-      <div class="article-row">
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/06/24/Reactor-Pattern/" class="thumbnail">
-  
-    <span style="background-image:url(/images/nodejs2.png
-)" alt="Reactor Pattern" class="thumbnail-image"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/Node-JS/">Node JS</a></p>
-        <p class="date"><time datetime="2015-06-25T05:08:34.000Z" itemprop="datePublished">2015-06-24</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/06/24/Reactor-Pattern/" class="title">Reactor Pattern</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        
-The Reactor PatternThe reactor pattern is the heart of Node.js async nature. This allows Node.js to be performant using single-threaded architectureand non-blocking I/O.
-Slow I/O and its Blocking nat
-      </p>
-    </div>
-  </article>
-
-    
-  
-    
-    
-    
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/02/08/NodeJS-Philosophy/" class="thumbnail">
-  
-    <span style="background-image:url(/images/nodejs2.png
-)" alt="NodeJS Philosophy" class="thumbnail-image"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/Node-JS/">Node JS</a></p>
-        <p class="date"><time datetime="2015-02-09T02:56:36.000Z" itemprop="datePublished">2015-02-08</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/02/08/NodeJS-Philosophy/" class="title">NodeJS Philosophy</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        
-The NodeJS PhilosophyNode.js has become a popular platform for application development. The community is growing and there are certain principles that define how applications are built and designed f
-      </p>
-    </div>
-  </article>
-
-    
-      </div>
-    
   
   
-    </div></section>
-  
-  
-
 
             </div>
           </section>
@@ -362,6 +210,29 @@ The NodeJS PhilosophyNode.js has become a popular platform for application devel
       
     </ul>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/06/28/Callback-Pattern/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Callback Pattern
+        
+      </p>
+      <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2015/02/08/NodeJS-Philosophy/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">NodeJS Philosophy</p>
+      <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
   
   <div class="widgets-container">
     

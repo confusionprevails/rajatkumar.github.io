@@ -3,19 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | ConfusionPrevails Blog</title>
+  <title>NodeJS Philosophy | ConfusionPrevails Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="nodejs,theory">
+  
 
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ConfusionPrevails Blog">
-<meta property="og:url" content="http://blog.rajat.co.in/archives/index.html">
+  <meta name="description" content="The NodeJS PhilosophyNode.js has become a popular platform for application development. The community is growing and there are certain principles that define how applications are built and designed fo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeJS Philosophy">
+<meta property="og:url" content="http://blog.rajat.co.in/2015/02/08/NodeJS-Philosophy/index.html">
 <meta property="og:site_name" content="ConfusionPrevails Blog">
-<meta property="og:description">
+<meta property="og:description" content="The NodeJS PhilosophyNode.js has become a popular platform for application development. The community is growing and there are certain principles that define how applications are built and designed fo">
+<meta property="og:image" content="http://blog.rajat.co.in/images/nodejs2.png">
+<meta property="og:updated_time" content="2015-12-19T03:12:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ConfusionPrevails Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="NodeJS Philosophy">
+<meta name="twitter:description" content="The NodeJS PhilosophyNode.js has become a popular platform for application development. The community is growing and there are certain principles that define how applications are built and designed fo">
   
   
     <link rel="icon" href="/favicon.png">
@@ -121,230 +125,79 @@
           <section id="main">
             <div class="main-body-header">
 
-              <h1 class="header"><i class="icon fa fa-archive"></i>archive</h1>
+              <h1 class="header"><a class="page-title-link" href="/categories/Node-JS/">Node JS</a></h1>
             </div>
             <div class="main-body-content">
               
-  
-  
-    
-    
+  <article id="post-NodeJS-Philosophy" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
       
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year"><i class="icon fa fa-calendar-o"></i>2015</a>
-        </div>
-        <div class="archives">
-    
-    
-    
-      <div class="article-row">
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/12/18/Hello-Blog/" class="thumbnail">
+        <header class="article-header">
+          
   
-    <span style="background-image:url(/images/nodejs2.png
-)" alt="Hello Blog" class="thumbnail-image"></span>
+    <h1 class="article-title" itemprop="name">
+      NodeJS Philosophy
+    </h1>
   
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2015/02/08/NodeJS-Philosophy/" class="article-date">
+  <time datetime="2015-02-09T02:56:36.000Z" itemprop="datePublished">2015-02-08</time>
 </a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/random/">random</a></p>
-        <p class="date"><time datetime="2015-12-19T00:31:11.000Z" itemprop="datePublished">2015-12-18</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/12/18/Hello-Blog/" class="title">Hello Blog</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        
-
       </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p><img src="/images/nodejs2.png" alt="" title="NodeJS Logo"></p>
+<h1 id="The_NodeJS_Philosophy"><a href="#The_NodeJS_Philosophy" class="headerlink" title="The NodeJS Philosophy"></a>The NodeJS Philosophy</h1><p>Node.js has become a popular platform for application development. The community is growing and there are certain principles<br> that define how applications are built and designed for nodejs.</p>
+<p>These philosophies can be really helpful when you are working in your node.js app.</p>
+<p>None of the following rules are imposed, and should be applied with some common sense.</p>
+<h2 id="Small_Core"><a href="#Small_Core" class="headerlink" title="Small Core"></a>Small Core</h2><p>The foundation of node.js is to have a very small set of core functionalities.</p>
+<p>This principle has allowed the developer community to build broader set of features, iterate faster and community is not bound to any slow-evolving solution.<br>Because of this principle, we have so many amazing npm libraries.</p>
+<p>Also, since we have bare minimum core functionalities, the maintainability is much easier.</p>
+<h2 id="Small_Modules"><a href="#Small_Modules" class="headerlink" title="Small Modules"></a>Small Modules</h2><p>Node.js promotes the concept of <em>modules</em> which is the smallest unit of reusable code. It promotes designing small modules in terms of size of code and scope of the code.</p>
+<p>This is the exact same principle that we see in Unix:</p>
+<ul>
+<li><strong>Small is Beautiful</strong></li>
+<li><strong>Make each program do one thing well</strong></li>
+</ul>
+<p>Some of the developers might think that this approach is counter-productive. But, with the rapid changes in technology it provides us with:</p>
+<ul>
+<li>Better code reusability</li>
+<li>Easier to understand and use</li>
+<li>Simpler to test and maintain</li>
+<li>Perfect to share with Browsers</li>
+</ul>
+<p>Its not uncommon to find several npm modules that perform just one function and is less than 100 lines of code!</p>
+<h2 id="Small_Surface_Area"><a href="#Small_Surface_Area" class="headerlink" title="Small Surface Area"></a>Small Surface Area</h2><p>OK, so the modules have to be small in size and scope. What the hell is  - <em>small surface area</em> ?</p>
+<p>Well, the intent is to - <strong>expose bare minimum functionality</strong>. The idea is to <strong>use</strong> the functionality and <em>not to extend</em> the functionality.<br>Yes, you read it right : lock down the internals of the module and expose minimal features.</p>
+<p>It might sound inflexible but it offers :</p>
+<ul>
+<li>simplified implementation</li>
+<li>API is less prone to erraneous usage</li>
+<li>increasing usability</li>
+<li>better maintainability</li>
+</ul>
+<h2 id="Simplicity"><a href="#Simplicity" class="headerlink" title="Simplicity"></a>Simplicity</h2><p>You must have heard of the <strong>KISS - Keep It Simple, Stupid</strong> principle.</p>
+<blockquote><p>Simplicity is the ultimate sophistication.</p>
+<footer><strong>Leonardo da Vinci</strong></footer></blockquote>
+<p>Designing a simple software vs a full-featured software has its own benefits.<br>Pure Object Oriented Designs try to mimic the real world without complexities and imperfections of the real world.<br>Its much better to get something working sooner with reasonable complexity, instead of trying to create a near-perfect solution with huge effort and tons of code to maintain.</p>
+<blockquote><p>I prefer uncomplicated practical approach than a pure flawless design involving huge effort.</p>
+<footer><strong>ConfusionPrevails</strong></footer></blockquote>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://blog.rajat.co.in/2015/02/08/NodeJS-Philosophy/" data-id="ciicj9atj000d6bs1nh7tyozx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/theory/">theory</a></li></ul>
+
+      </footer>
     </div>
   </article>
-
-    
-  
-    
-    
-    
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/12/18/hello-world/" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"></p>
-        <p class="date"><time datetime="2015-12-19T00:22:15.000Z" itemprop="datePublished">2015-12-18</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/12/18/hello-world/" class="title">Hello World</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
-      </p>
-    </div>
-  </article>
-
-    
-      </div>
-    
-  
-    
-    
-    
-    
-      <div class="article-row">
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/07/06/process-nextTick-vs-setImmediate-vs-setTimeout/" class="thumbnail">
-  
-    <span style="background-image:url(/images/nodejs2.png
-)" alt="process.nextTick() vs setImmediate() vs setTimeout()" class="thumbnail-image"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/Node-JS/">Node JS</a></p>
-        <p class="date"><time datetime="2015-07-06T18:15:27.000Z" itemprop="datePublished">2015-07-06</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/07/06/process-nextTick-vs-setImmediate-vs-setTimeout/" class="title">process.nextTick() vs setImmediate() vs setTimeout()</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        
-process.nextTick() vs setImmediate() vs setTimeout()So, you need to ensure your node.js code is completely asynchronous. But what is the best option to make a synchronous function behave asynchronous
-      </p>
-    </div>
-  </article>
-
-    
-  
-    
-    
-    
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/06/28/Callback-Pattern/" class="thumbnail">
-  
-    <span style="background-image:url(/images/nodejs2.png
-)" alt="Callback Pattern" class="thumbnail-image"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/Node-JS/">Node JS</a></p>
-        <p class="date"><time datetime="2015-06-29T02:14:39.000Z" itemprop="datePublished">2015-06-28</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/06/28/Callback-Pattern/" class="title">Callback Pattern</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        
-The Callback Patterncallbacks are the handlers we saw in Reactor Pattern. This brings in a new style of programming where the synchronous return is replaced by callback functions.
-The Continuation Pa
-      </p>
-    </div>
-  </article>
-
-    
-      </div>
-    
-  
-    
-    
-    
-    
-      <div class="article-row">
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/06/24/Reactor-Pattern/" class="thumbnail">
-  
-    <span style="background-image:url(/images/nodejs2.png
-)" alt="Reactor Pattern" class="thumbnail-image"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/Node-JS/">Node JS</a></p>
-        <p class="date"><time datetime="2015-06-25T05:08:34.000Z" itemprop="datePublished">2015-06-24</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/06/24/Reactor-Pattern/" class="title">Reactor Pattern</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        
-The Reactor PatternThe reactor pattern is the heart of Node.js async nature. This allows Node.js to be performant using single-threaded architectureand non-blocking I/O.
-Slow I/O and its Blocking nat
-      </p>
-    </div>
-  </article>
-
-    
-  
-    
-    
-    
-    
-        
-  <article class="article article-summary">
-    <div class="article-summary-inner">
-      
-<a href="/2015/02/08/NodeJS-Philosophy/" class="thumbnail">
-  
-    <span style="background-image:url(/images/nodejs2.png
-)" alt="NodeJS Philosophy" class="thumbnail-image"></span>
-  
-</a>
-
-      <div class="article-meta">
-        <p class="category"><a class="article-category-link" href="/categories/Node-JS/">Node JS</a></p>
-        <p class="date"><time datetime="2015-02-09T02:56:36.000Z" itemprop="datePublished">2015-02-08</time></p>
-      </div>
-      <h2 class="article-title">
-        <a href="/2015/02/08/NodeJS-Philosophy/" class="title">NodeJS Philosophy</a>
-      </h2>
-      <p class="article-excerpt">
-        
-        
-The NodeJS PhilosophyNode.js has become a popular platform for application development. The community is growing and there are certain principles that define how applications are built and designed f
-      </p>
-    </div>
-  </article>
-
-    
-      </div>
-    
   
   
-    </div></section>
-  
-  
-
 
             </div>
           </section>
@@ -362,6 +215,23 @@ The NodeJS PhilosophyNode.js has become a popular platform for application devel
       
     </ul>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/06/24/Reactor-Pattern/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Reactor Pattern
+        
+      </p>
+      <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+  
+  
+</nav>
+
   
   <div class="widgets-container">
     
